@@ -8,39 +8,34 @@ function moveleft()
 {
  redball.left= redball.left-5;
 }
-
 function mysayHello()
 {
 alert("Hello DeAustin Benson");
 }
-
 function moveright()
 {
  redball.left= redball.left+5;
 }
-
 function moveup()
 {
  redball.top= redball.top-5;
 }
-
 function movedown()
 {
  redball.top= redball.top+5;
 }
-
-function diagonalleftup(){
-redball.top= redball.top-5;
-redball.left= redball.left-5;
-}
-
-function diagonalrightdown(){
-redball.down= redball.down+5;
-redball.right= redball.right+5;
-}
-
 function movesquare()
 {
+
+
+
+
+
+
+
+
+
+
  redball.left= redball.left+110;
  redball.left= redball.left+150;
  redball.left= redball.left+150;
@@ -73,6 +68,8 @@ function movesquare()
  redball.top= redball.top-150;
  redball.top= redball.top-150;
  redball.top= redball.top-150;
+ 
+ 
 }
  </script>
 </head>
@@ -83,7 +80,6 @@ function movesquare()
 <button onclick="moveup();">MoveUp</button>
 <button onclick="movedown();">MoveDown</button>
 <button onclick="movesquare();">MoveSquare</button>
-<button onclick="diagonalleftup();">MoveDiagonal</button>
 
 <img src="redball.jpg" id="redball" />
 </body>
