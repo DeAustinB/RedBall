@@ -41,38 +41,22 @@
  }
  function movesquare()
  {
-  moveright();
-  moveright();
-  moveright();
-  moveright();
-  moveright();
-  moveright();
-  moveright();
-  moveright();
-  movedown();
-  movedown();
- movedown();
-  movedown();
-  movedown();
-  movedown();
-  movedown();
-  movedown();
- moveleft();
-  moveleft();
-  moveleft();
-  moveleft();
-  moveleft();
-  moveleft();
-  moveleft();
-  moveleft();
-  moveup();
- moveup();
- moveup();
-  moveup();
-  moveup();
-  moveup();
-  moveup();
-  moveup();
+	for(var i=1;i<=8;i++)
+		{
+		moveright();
+		}
+    for(var i=1;i<=8;i++)
+		{
+		movedown();
+		}
+    for(var i=1;i<=8;i++)
+		{
+		moveleft();
+		}
+    for(var i=1;i<=8;i++)
+		{
+		moveup();
+		}
  
   }
   function movediamond()
@@ -152,19 +136,11 @@
  	   moveright();
  	   movedown();
  	   moveright();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   moveleft();
- 	   }
+ 	   for(var i=1;i<=12;i++)
+		{
+		moveleft();
+		}
+ 	}
  	function bouncingball()
  	{
  	 moveup();
@@ -288,6 +264,13 @@
  	 moveup();
  	 moveleft();
  	}
+	function moveup10()
+	{
+		for(var i=1;i<=10;i++)
+		{
+		moveup();
+		}
+	}
   </script>
  </head>
  <body>
@@ -300,6 +283,7 @@
  <button onclick="movediamond();">MoveDiamond</button>
  <button onclick="movetriangle();">MoveTriangle</button>
  <button onclick="bouncingball();">BouncingBall</button>
+ <button onclick="moveup10();">Up 10</button>
  <img src="redball.jpg" id="redball" />
  </body>
  </html>
