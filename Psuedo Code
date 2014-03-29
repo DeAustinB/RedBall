@@ -1,0 +1,29 @@
+<script type="text/javascript">
+<!--
+var gdis = 15;
+if( gdis > 18 ){
+   gball.move("<b>Qualifies f</b>");
+}else{
+   gball.stop("<b>Does not qualify</b>");
+}
+<!--
+var odis = 15;
+if( odis > 18 ){
+   oball.move("<b>Qualifies f</b>");
+}else{
+   oball.stop("<b>Does not qualify</b>");
+}
+<!--
+var hdis = 15;
+if( hdis > 18 ){
+   hball.move("<b>Qualifies f</b>");
+}else{
+   hball.stop("<b>Does not qualify</b>");
+}
+<!--
+var wdis = 15;
+if( wdis > 18 ){
+   wball.move("<b>Qualifies f</b>");
+}else{
+   wball.stop("<b>Does not qualify</b>");
+}
