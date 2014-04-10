@@ -1,0 +1,458 @@
+<!DOCTYPE HTML>
+<html>
+<title>Redball 06</title>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<style>
+#greenball{
+	position:absolute;
+	top:200px;
+	left:880px;}
+
+#orangeball{
+	position:absolute;
+	left:600px;
+	top:600px;}
+
+#whiteball{
+	position:absolute;
+	top:380px;
+	left:500px;}	
+
+#hairyball{
+	position:absolute;
+	top:400px;
+	left:880px;}	
+
+#table3{
+	position:absolute;
+	top:480px;}	
+
+
+#table4{
+	position:absolute; 
+	top:480px;
+	left:1400px;}
+
+table,tr,td{
+	border:1px solid black;}
+
+#wall {
+	background-color: midnightblue;
+	height: 520px;
+	width: 50px;
+	position:absolute;
+	top:110px;
+	left:780px;}
+
+</style>
+<h1><center>Welcome To The Twilight Zone</h1></center>
+<!--  $("#ruarrow").click(function(){ 
+   greenball.moveupright();
+});-->
+
+<script>
+function ball(cssid)
+{
+ this.checkwallhit=function()
+ {
+		var hit=false;
+
+		var ballposition=$(cssid).offset();
+		var ballwidth=$(cssid).width();
+		var ballheight=$(cssid).height();
+		var balleft=ballposition.left;
+		var balltop=ballposition.top;
+		var ballright=balleft+ballwidth;
+		var ballbot=balltop+ballheight;
+
+		var wallposition=$("#wall").offset();
+		var wallwidth=$("#wall").width();
+		var wallheight=$("#wall").height();
+		var walleft=wallposition.left;
+		var walltop=wallposition.top;
+		var wallright=walleft+wallwidth;
+		var wallbot=walltop+wallheight;
+
+		if (ballright > walleft && 
+			balltop < wallbot && 
+			ballbot > walltop && 
+			balleft < wallright)
+ {
+			hit = true;}
+		return hit;}
+
+	this.moveright=function(){
+
+	var nothit = this.checkwallhit();
+		var position=$(cssid).offset();
+		console.log("left "+position.left);
+		console.log("top "+position.top);
+	if(nothit == false){position.left=position.left+20}
+	else{position.left=position.left-20;}
+		$(cssid).offset(position);}
+
+	this.movedown=function(){
+	var nothit = this.checkwallhit();
+		var position=$(cssid).offset();
+		console.log("top "+position.top);
+	if(nothit == false){position.top=position.top+20}
+		else{position.top=position.top-20;}
+		$(cssid).offset(position);}
+
+	this.moveleft=function(){
+	var nothit = this.checkwallhit();
+	var position=$(cssid).offset();
+		console.log("left "+position.left);
+	if(nothit == false){position.left=position.left-20}
+	else{position.left=position.left+20;}
+		$(cssid).offset(position);}
+
+	this.moveup=function(){
+	var nothit = this.checkwallhit();
+	var position=$(cssid).offset();
+		console.log("top "+position.top);
+	if(nothit == false){position.top=position.top-20}
+	else{position.top=position.top+20;}
+		$(cssid).offset(position);}
+
+	this.movediaglu=function()
+	{	var nothit = this.checkwallhit();
+		var position=$(cssid).offset();
+		console.log("top "+position.top);
+		if(nothit == false){position.top=position.top-20
+		position.left=position.left-20}
+		else{position.top=position.top+20;
+		position.left=position.left+20;}
+		$(cssid).offset(position);
+	}
+	this.movediagru=function()
+	{	var nothit = this.checkwallhit();
+		var position=$(cssid).offset();
+		console.log("top "+position.top);
+		if(nothit == false){position.top=position.top-20
+		position.left=position.left+20}
+		else{position.top=position.top+20;
+		position.left=position.left-20}
+		$(cssid).offset(position);
+	}
+	this.movediagld=function()
+	{	var nothit = this.checkwallhit();
+		var position=$(cssid).offset();
+		console.log("top "+position.top);
+		if(nothit == false){position.top=position.top+20
+		position.left=position.left-20}
+		else{position.top=position.top-20;
+		position.left=position.left+20;}
+		$(cssid).offset(position);
+	}
+	this.movediagrd=function()
+	{	var nothit = this.checkwallhit();
+		var position=$(cssid).offset();
+		console.log("top "+position.top);
+		if(nothit == false){position.top=position.top+20
+		position.left=position.left+20}
+		else{position.top=position.top-20;
+		position.left=position.left-20;}
+		$(cssid).offset(position);
+	}
+}
+
+var greenball=new ball("#greenball");
+var orangeball=new ball("#orangeball");
+var whiteball=new ball("#whiteball");
+var hairyball=new ball("#hairyball");
+
+</script>
+
+
+</head>
+
+<body>
+<div id="wall"></div>
+
+<img src="greenball.jpg" id="greenball" class="ball"/>
+<img src="orangeball.jpg" id="ornageball" class="ball"/>
+<img src="whiteball.jpg" id="whiteball" class="ball"/>
+<img src="hairyball.jpg" id="hairyball" class="ball"/>
+
+
+<table align="left" id="table1" class="table1 table2 table3 table4">
+	<tr>
+    <td><img src="arrow_ul.png" id="arrow_ul"/></td>
+    <td><img src="arrow_u.png" id="arrow_u"/></td>
+    <td><img src="arrow_ur.png" id="arrow_ur"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_l.png" id="arrow_l"/></td>
+    <td>Green</td>
+    <td><img src="arrow_r.png" id="arrow_r"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_dl.png" id="arrow_dl"/></td>
+    <td><img src="arrow_d.png" id="arrow_d"/></td>
+    <td><img src="arrow_dr.png" id="arrow_dr"/></td>
+  </tr>
+</table>
+<script>
+		$("#table1 #arrow_ul").click (function(){
+		greenball.movediaglu();
+	});
+
+		$("#table1 #arrow_u").click (function(){
+		greenball.moveup();
+	});
+
+		$("#table1 #arrow_ur").click (function(){
+		greenball.movediagru();
+	});
+
+	$("#table1 #arrow_l").click (function(){
+		greenball.moveleft();
+	});
+
+		$("#table1 #arrow_r").click (function(){
+		greenball.moveright();
+	});
+
+		$("#table1 #arrow_dl").click (function(){
+		greenball.movediagld();
+	});
+
+		$("#table1 #arrow_d").click (function(){
+		greenball.movedown();
+	});
+
+		$("#table1 #arrow_dr").click (function(){
+		greenball.movediagrd();
+	});
+	
+</script>
+
+<table align="right" id="table2" class="table" >
+	 <tr>
+    <td><img src="arrow_ul.png" id="arrow_ul"/></td>
+    <td><img src="arrow_u.png" id="arrow_u"/></td>
+    <td><img src="arrow_ur.png" id="arrow_ur"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_l.png" id="arrow_l"/></td>
+    <td>Orange</td>
+    <td><img src="arrow_r.png" id="arrow_r"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_dl.png" id="arrow_dl"/></td>
+    <td><img src="arrow_d.png" id="arrow_d"/></td>
+    <td><img src="arrow_dr.png" id="arrow_dr"/></td>
+  </tr>
+</table>
+<script>
+		$("#arrow_button_ul_white").click (function(){
+		orangeball.movediagul();
+	});
+	
+		$("#table2 #arrow_ul").click (function(){
+		orangeball.movediaglu();
+	});
+
+		$("#table2 #arrow_u").click (function(){
+		orangeball.moveup();
+	});
+
+		$("#table2 #arrow_ur").click (function(){
+		orangeball.movediagru();
+	});
+
+	$("#table2 #arrow_l").click (function(){
+		orangeball.moveleft();
+	});
+
+		$("#table2 #arrow_r").click (function(){
+		orangeball.moveright();
+	});
+
+		$("#table2 #arrow_dl").click (function(){
+		orangeball.movediagld();
+	});
+
+		$("#table2 #arrow_d").click (function(){
+		orangeball.movedown();
+	});
+
+		$("#table2 #arrow_dr").click (function(){
+		orangeball.movediagrd();
+	});
+		
+</script>
+
+<table align="left" id="table3" class="table">
+	<tr>
+    <td><img src="arrow_ul.png" id="arrow_ul"/></td>
+    <td><img src="arrow_u.png" id="arrow_u"/></td>
+    <td><img src="arrow_ur.png" id="arrow_ur"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_l.png" id="arrow_l"/></td>
+    <td>White</td>
+    <td><img src="arrow_r.png" id="arrow_r"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_dl.png" id="arrow_dl"/></td>
+    <td><img src="arrow_d.png" id="arrow_d"/></td>
+    <td><img src="arrow_dr.png" id="arrow_dr"/></td>
+  </tr>
+</table>
+<script>
+$("#arrow_button_ul_white").click (function(){
+		whiteball.movediagul();
+	});
+	</script>
+	<script>
+		$("#table3 #arrow_ul").click (function(){
+		whiteball.movediaglu();
+	});
+
+		$("#table3 #arrow_u").click (function(){
+		whiteball.moveup();
+	});
+
+		$("#table3 #arrow_ur").click (function(){
+		whiteball.movediagru();
+	});
+
+	    $("#table3 #arrow_l").click (function(){
+		whiteball.moveleft();
+	});
+
+		$("#table3 #arrow_r").click (function(){
+		whiteball.moveright();
+	});
+
+		$("#table3 #arrow_dl").click (function(){
+		whiteball.movediagld();
+	});
+
+		$("#table3 #arrow_d").click (function(){
+		whiteball.movedown();
+	});
+
+		$("#table3 #arrow_dr").click (function(){
+		whiteball.movediagrd();
+	});
+		
+	
+</script>
+
+<table align="right" id="table4" class="table">
+	<tr>
+    <td><img src="arrow_ul.png" id="arrow_ul"/></td>
+    <td><img src="arrow_u.png" id="arrow_u"/></td>
+    <td><img src="arrow_ur.png" id="arrow_ur"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_l.png" id="arrow_l"/></td>
+    <td>Hairy</td>
+    <td><img src="arrow_r.png" id="arrow_r"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_dl.png" id="arrow_dl"/></td>
+    <td><img src="arrow_d.png" id="arrow_d"/></td>
+    <td><img src="arrow_dr.png" id="arrow_dr"/></td>
+  </tr>
+</table>
+<script>
+		$("#arrow_button_ul_white").click (function(){
+		hairyball.movediagul();
+	});
+	</script>
+	<script>
+		$("#table4 #arrow_ul").click (function(){
+		hairyball.movediaglu();
+	});
+
+		$("#table4 #arrow_u").click (function(){
+		hairyball.moveup();
+	});
+
+		$("#table4 #arrow_ur").click (function(){
+		hairyball.movediagru();
+	});
+
+	    $("#table4 #arrow_l").click (function(){
+		hairyball.moveleft();
+	});
+
+		$("#table4 #arrow_r").click (function(){
+		hairyball.moveright();
+	});
+
+		$("#table4 #arrow_dl").click (function(){
+		hairyball.movediagld();
+	});
+
+		$("#table4 #arrow_d").click (function(){
+		hairyball.movedown();
+	});
+
+		$("#table4 #arrow_dr").click (function(){
+		hairyball.movediagrd();
+	});
+   
+
+
+//*******************************
+//* COLOR CHANGING CODE
+//*******************************
+
+
+function color_changer() {
+
+var now = new Date();
+
+var seconds = now.getSeconds();
+
+var bcolor = "white";
+
+if(seconds == 0 || seconds == 7 || seconds == 14 || seconds == 21 || seconds == 28 || seconds == 35 || seconds == 42 || seconds == 49 || seconds == 56) { 
+ bcolor = "red";
+}
+
+if(seconds == 1 || seconds == 8 || seconds == 15 || seconds == 22 || seconds == 29 || seconds == 36 || seconds == 43 || seconds == 50 || seconds == 57) { 
+ bcolor = "orange";
+}
+
+if(seconds == 2 || seconds == 9 || seconds == 16 || seconds == 23 || seconds == 30 || seconds == 37 || seconds == 44 || seconds == 51 || seconds == 58) { 
+ bcolor = "yellow";
+}
+
+if(seconds == 3 || seconds == 10 || seconds == 17 || seconds == 24 || seconds == 31 || seconds == 38 || seconds == 45 || seconds == 52 || seconds == 59) {
+ bcolor = "green";
+}
+
+if(seconds == 4 || seconds == 11 || seconds == 18 || seconds == 25 || seconds == 32 || seconds == 39 || seconds == 46 || seconds == 53 || seconds == 60) {
+ document.bcolor = "blue";
+}
+
+if(seconds == 5 || seconds == 12 || seconds == 19 || seconds == 26 || seconds == 33 || seconds == 40 || seconds == 47 || seconds == 54) { 
+ bcolor = "indigo";
+}
+
+if(seconds == 6 || seconds == 13 || seconds == 20 || seconds == 27 || seconds == 34 || seconds == 41 || seconds == 48 || seconds == 55) {
+ bcolor = "purple";
+}
+
+document.getElementsByTagName("body")[0].style.backgroundColor = bcolor;
+setTimeout("color_changer()", 1000);
+
+}
+
+</script>
+<form name = control>
+<input name = "on_off" Type = "button" value = "On" onClick = "color_changer()">
+<input type = "button" value = "Off" onClick = "history.go(0)">
+</form>
+
+
+</script>
+</body>
+</html>
