@@ -1,7 +1,367 @@
 <html>
 <head>
+<style>
+#redball 
+{
+	position:absolute;
+	left:200px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+function Ball (cssid)
+{
+<!-- Move Ball Right Below-->
+	this.moveright=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		console.log("top "+pos.top);
+		pos.left=pos.left+20
+		$(cssid).offset(pos);
+	}
+<!-- Move Ball Left Below-->
+	this.moveleft=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		console.log("top "+pos.top);
+		pos.left=pos.left-20
+		$(cssid).offset(pos);
+	}
+<!-- Move Ball Down Below-->
+	this.movedown=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("top "+pos.top);
+		pos.top=pos.top+20
+		$(cssid).offset(pos);
+	}
+<!-- Move Ball Diagonal Left Up Below-->
+	this.movediaglu=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		console.log("top "+pos.top);
+		console.log("left "+pos.left);
+		pos.left=pos.left-20
+		pos.top=pos.top-20
+		$(cssid).offset(pos);
+	}
+	<!-- Move Ball Diagonal Left Down Below-->
+	this.movediagld=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		console.log("top "+pos.top);
+		console.log("left "+pos.left);
+		pos.left=pos.left-20
+		pos.top=pos.top+20
+		$(cssid).offset(pos);
+	}
+	<!-- Move Ball Diagonal Right Down Below-->
+	this.movediagrd=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		console.log("top "+pos.top);
+		console.log("left "+pos.left);
+		pos.left=pos.left+20
+		pos.top=pos.top+20
+		$(cssid).offset(pos);
+	}
+	<!-- Move Ball Diagonal Right Up Below-->
+	this.movediagdru=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		console.log("top "+pos.top);
+		console.log("left "+pos.left);
+		pos.left=pos.left+20
+		pos.top=pos.top-20
+		$(cssid).offset(pos);
+	}
+	<!-- Move Ball UP Below-->
+	this.moveup=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("top "+pos.top);
+		pos.top=pos.top-20
+		$(cssid).offset(pos);
+	}
+}
+var greenball=new Ball("#greenball");
+var orangeball=new Ball("#orangeball");
+var hairyball=new Ball("#hairyball");
+var blueball=new Ball("#blueball");
+
+</script>
+<!-- Site Table Design . -->
+<style>
+table,th,td
+{
+border:1px solid blue;
+border-collapse:collapse
+}
+</style>
+<!-- End Site Table Design -->
 </head>
 <body>
-<p> This is an HTML document </p>
+	<!--Table 1-->
+<div align="Left"><table id="table1"  style="margin-top:50px; margin-left:10px;">
+  <tr>
+    <td><img src="arrow_button_lu.png" id="arrow_button_lu"/></td>
+    <td><img src="arrow_button_u.png" id="arrow_button_up"/></td>
+    <td><img src="arrow_button_ru.png" id="arrow_button_ru"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_l.png" id="arrow_button_l"/></td>
+    <td>Orange</td>
+    <td><img src="arrow_button_r.png" id="arrow_button_r"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_ld.png" id="arrow_button_ld"/></td>
+    <td><img src="arrow_button_d.png" id="arrow_button_d"/></td>
+    <td><img src="arrow_button_rd.png" id="arrow_button_rd"/></td>
+  </tr>
+
+</table>
+</div>
+<!--test orange code-->
+	<script>
+		$("#arrow_button_lu").click (function(){
+		orangeball.movediaglu();
+	});
+	</script><script>
+		$("#arrow_button_up").click (function(){
+		orangeball.moveup();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ru").click (function(){
+		orangeball.movediagdru();
+	});
+	</script>
+	<script>
+		$("#arrow_button_l").click (function(){
+		orangeball.moveleft();
+	});
+	</script>
+	<script>
+		$("#arrow_button_r").click (function(){
+		orangeball.moveright();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ld").click (function(){
+		orangeball.movediagld();
+	});
+	</script>
+	<script>
+		$("#arrow_button_d").click (function(){
+		orangeball.movedown();
+	});
+	</script>
+	<script>
+		$("#arrow_button_rd").click (function(){
+		orangeball.movediagrd();
+	});
+	</script>
+<!--test code end-->
+<!--Table 2-->
+<div align="Right"><table id="table2" style="margin-top:-150px; margin-left:10px;">
+<tr>
+    <td><img src="arrow_button_lu.png" id="arrow_button_lu_blue"/></td>
+    <td><img src="arrow_button_u.png" id="arrow_button_up_blue"/></td>
+    <td><img src="arrow_button_ru.png" id="arrow_button_ru_blue"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_l.png" id="arrow_button_l_blue"/></td>
+    <td>Blue</td>
+    <td><img src="arrow_button_r.png" id="arrow_button_r_blue"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_ld.png" id="arrow_button_ld_blue"/></td>
+    <td><img src="arrow_button_d.png" id="arrow_button_d_blue"/></td>
+    <td><img src="arrow_button_rd.png" id="arrow_button_rd_blue"/></td>
+  </tr>
+</table>
+</div>
+</table>
+</div>
+<!--test blue code-->
+	<script>
+		$("#arrow_button_lu_blue").click (function(){
+		blueball.movediaglu();
+	});
+	</script>
+	<script>
+		$("#arrow_button_up_blue").click (function(){
+		blueball.moveup();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ru_blue").click (function(){
+		blueball.movediagdru();
+	});
+	</script>
+	<script>
+		$("#arrow_button_l_blue").click (function(){
+		blueball.moveleft();
+	});
+	</script>
+	<script>
+		$("#arrow_button_r_blue").click (function(){
+		blueball.moveright();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ld_blue").click (function(){
+		blueball.movediagld();
+	});
+	</script>
+	<script>
+		$("#arrow_button_d_blue").click (function(){
+		blueball.movedown();
+	});
+	</script>
+	<script>
+		$("#arrow_button_rd_blue").click (function(){
+		blueball.movediagrd();
+	});
+	</script>
+<!--test code end-->
+	<!--Images-->
+	<div style="text-align:center;border:0px solid black">
+	<img src="greenball.jpg" id="greenball" class="ball" alt="Dont Stress" height="150" width="150"id="greenball"/>
+	<img src="orangeball.jpg" id="orangeball" class="ball" alt="Dont Stress" height="150" width="150"id="orangeball"/>
+	</div>
+	<div style="text-align:center;border:0px solid black">
+	<img src="pinkball.jpg" id="pinkball" class="ball" alt="Dont Stress" height="150" width="150"id="pinkball"/>
+	<img src="blueball.jpg" id="blueball" class="ball" alt="Dont Stress" height="150" width="150"id="blueball"/>
+	</div>
+	<!--End Images-->
+<!--Table 3-->
+<div align="left"><table id="table3" width="150px" style="margin-top:60px; margin-left:10px;">
+  <tr>
+    <td><img src="arrow_button_lu.png" id="arrow_button_lu_green"/></td>
+    <td><img src="arrow_button_u.png" id="arrow_button_u_green"/></td>
+    <td><img src="arrow_button_ru.png" id="arrow_button_ru_green"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_l.png" id="arrow_button_l_green"/></td>
+    <td>Green</td>
+    <td><img src="arrow_button_r.png" id="arrow_button_r_green"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_ld.png" id="arrow_button_ld_green"/></td>
+    <td><img src="arrow_button_d.png" id="arrow_button_d_green"/></td>
+    <td><img src="arrow_button_rd.png" id="arrow_button_rd_green"/></td>
+  </tr>
+</table>
+</div>
+<!--test green code-->
+	<script>
+		$("#arrow_button_lu_green").click (function(){
+		greenball.movediaglu();
+	});
+	</script>
+	<script>
+		$("#arrow_button_up_green").click (function(){
+		greenball.moveup();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ru_green").click (function(){
+		greenball.movediagdru();
+	});
+	</script>
+	<script>
+		$("#arrow_button_l_green").click (function(){
+		greenball.moveleft();
+	});
+	</script>
+	<script>
+		$("#arrow_button_r_green").click (function(){
+		greenball.moveright();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ld_green").click (function(){
+		greenball.movediagld();
+	});
+	</script>
+	<script>
+		$("#arrow_button_d_green").click (function(){
+		greenball.movedown();
+	});
+	</script>
+	<script>
+		$("#arrow_button_rd_green").click (function(){
+		greenball.movediagrd();
+	});
+	</script>
+<!--test code end-->
+<!--Table 4-->
+<div align="right"><table id="table4" style="margin-top:-150px; margin-left:10px;">
+  <tr>
+    <td><img src="arrow_button_lu.png" id="arrow_button_lu_pink"/></td>
+    <td><img src="arrow_button_u.png" id="arrow_button_up_pink"/></td>
+    <td><img src="arrow_button_ru.png" id="arrow_button_ru_pink"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_l.png" id="arrow_button_l_pink"/></td>
+    <td>Pink</td>
+    <td><img src="arrow_button_r.png" id="arrow_button_r_pink"/></td>
+  </tr>
+  <tr>
+    <td><img src="arrow_button_ld.png" id="arrow_button_ld_pink"/></td>
+    <td><img src="arrow_button_d.png" id="arrow_button_d_pink"/></td>
+    <td><img src="arrow_button_rd.png" id="arrow_button_rd_pink"/></td>
+  </tr>
+</table>
+</div>
+<!--test pink code-->
+	<script>
+		$("#arrow_button_lu_hairy").click (function(){
+		hairyball.movediaglu();
+	});
+	</script>
+	<script>
+		$("#arrow_button_up_hairy").click (function(){
+		hairyball.moveup();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ru_hairy").click (function(){
+		hairyball.movediagdru();
+	});
+	</script>
+	<script>
+		$("#arrow_button_l_hairy").click (function(){
+		hairyball.moveleft();
+	});
+	</script>
+	<script>
+		$("#arrow_button_r_hairy").click (function(){
+		hairyball.moveright();
+	});
+	</script>
+	<script>
+		$("#arrow_button_ld_hairy").click (function(){
+		hairyball.movediagld();
+	});
+	</script>
+	<script>
+		$("#arrow_button_d_hairy").click (function(){
+		hairyball.movedown();
+	});
+	</script>
+	<script>
+		$("#arrow_button_rd_hairy").click (function(){
+		hairyball.movediagrd();
+	});
+	</script>
+<!--test code end-->
 </body>
 </html>

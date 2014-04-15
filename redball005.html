@@ -56,7 +56,15 @@ function ball(cssid)
 {
  this.checkwallhit=function()
  {
-		var hit=false;
+		var enemyYPositions = [];   //empty square brackets means new empty array
+		var enemyXPositions = [];
+		var avatarX = 0;
+		var avatarY = 0;
+		var avatarImage;
+		var enemyImage;
+		var ticksSurvived = 0;
+
+        var hit=false;
 
 		var ballposition=$(cssid).offset();
 		var ballwidth=$(cssid).width();
@@ -163,12 +171,44 @@ var orangeball=new ball("#orangeball");
 var whiteball=new ball("#whiteball");
 var hairyball=new ball("#hairyball");
 
+
+function handleTick() {
+ 
+    //...
+     
+    currentEnemyNumber = 0;
+    while (currentEnemyNumber < numberOfEnemies) {
+        if ( ( (avatarX < enemyXPositions[currentEnemyNumber] && enemyXPositions[currentEnemyNumber] < avatarX + 30) || (enemyXPositions[currentEnemyNumber] < avatarX && avatarX < enemyXPositions[currentEnemyNumber] + 30) ) && ( (avatarY < enemyYPositions[currentEnemyNumber] && enemyYPositions[currentEnemyNumber] < avatarY + 33) || (enemyYPositions[currentEnemyNumber] < avatarY && avatarY < enemyYPositions[currentEnemyNumber] + 30) ) ) {
+            alert("You hit an enemy! You survived " + ticksSurvived + " ticks.");
+        }
+        currentEnemyNumber = currentEnemyNumber + 1;
+    }
+     
+    ticksSurvived = ticksSurvived + 1;
+}
+
+currentEnemyNumber = 0;
+while (currentEnemyNumber < numberOfEnemies) {
+    if ( ( (avatarX < enemyXPositions[currentEnemyNumber] && enemyXPositions[currentEnemyNumber] < avatarX + 30) || (enemyXPositions[currentEnemyNumber] < avatarX && avatarX < enemyXPositions[currentEnemyNumber] + 30) ) && ( (avatarY < enemyYPositions[currentEnemyNumber] && enemyYPositions[currentEnemyNumber] < avatarY + 33) || (enemyYPositions[currentEnemyNumber] < avatarY && avatarY < enemyYPositions[currentEnemyNumber] + 30) ) ) {
+        alert("You hit an enemy! You survived " + ticksSurvived + " ticks.");
+        startNewGame();
+    }
+    currentEnemyNumber = currentEnemyNumber + 1;
+}
+
+
 </script>
 
 
 </head>
 
 <body>
+
+
+
+
+
+
 <div id="wall"></div>
 
 <img src="greenball.jpg" id="greenball" class="ball"/>
@@ -247,10 +287,6 @@ var hairyball=new ball("#hairyball");
   </tr>
 </table>
 <script>
-		$("#arrow_button_ul_white").click (function(){
-		orangeball.movediagul();
-	});
-	
 		$("#table2 #arrow_ul").click (function(){
 		orangeball.movediaglu();
 	});
@@ -282,7 +318,7 @@ var hairyball=new ball("#hairyball");
 		$("#table2 #arrow_dr").click (function(){
 		orangeball.movediagrd();
 	});
-		
+	
 </script>
 
 <table align="left" id="table3" class="table">

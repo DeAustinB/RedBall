@@ -1,5 +1,13 @@
 <html>
+<title>Redball Midterm 004</title>
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<h1><center>Welcome To The Twilight Zone</h1></center>
+
+<h4><center><p id="scroller"></p>
+<script type="text/javascript"></script>
+
 <style>
 #greenball{
 	position:absolute;
@@ -11,67 +19,65 @@
 	left:500px;
 	top:300px}
 
-#whiteball{
+#hairyball{
 	position:absolute;
 	top:100px;
 	left:500px;}	
 
-#hairyball{
+#whiteball{
 	position:absolute;
 	top:300px;
 	left:280px}	
 
-#brickwall{
+#wall{
 		position:absolute;
 		height: 200px;
 		width: 10px;
 		background-color: blue;
 		top: 180px;
-		left: 10000px;}
+		left: 1000px;}
+
 
 
 table,tr,td{
 border:1px solid black;}
 
 </style>
-
-</script>
-<h1><center>Welcome To The Twilight Zone</h1></center>
-</form>
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<!--  $("#ruarrow").click(function(){ 
+   redball.moveupright();
+});-->
 
 <script>
 function Ball (cssid)
 {
-	this.checkbrickwallhit=function()
-	{
-		var hit = false;
+this.checkwallhit=function()
+{
 
-		var ballposition=$(cssid).offset();
-		var ballwidth=$(cssid).width();
-		var ballheight=$(cssid).height();
-		var ballleft=ballposition.left;
-		var balltop=ballposition.top;
-		var ballright=ballleft+ballwidth;
-		var ballbottom=balltop+ballheight;
+	var hit=false;
+	var ballpos=$(cssid).offset();
+	var ballwidth=$(cssid).width();
+	var ballheight=$(cssid).height();
+	var ballleft=ballpos.left;
+	var balltop=ballpos.top;
+	var ballright=ballleft+ballwidth;
+	var ballbottom=balltop+ballheight;
 
-		var brickwallposition=$("#brickwall").offset();
-		var brickwallwidth=$("#brickwall").width();
-		var brickwallheight=$("#brickwall").height();
-		var brickwallleft=brickwallposition.left;
-		var brickwalltop=brickwallposition.top;
-		var brickwallright=brickwallleft+brickwallwidth;
-		var brickwallbottom=brickwalltop+brickwallheight;
+    var wallpos=$("#wall").offset();
+	var wallwidth=$("wall").width();
+	var wallheight=$("wall").height();
+	var wallleft=wallpos.left;
+	var walltop=wallpos.top;
+	var wallright=wallleft+wallwidth;
+	var wallbottom=walltop+wallheight;
 
-		if (ballright > brickwallleft && 
-			balltop < brickwallbottom &&
-			ballbottom > brickwalltop &&
-			ballleft < brickwallright){
-			hit = true;}
-		 return hit;
-	}
+	if (ballright>wallleft && 
+		ballbottom>walltop && 
+		balltop<wallbottom && 
+		ballleft<wallright){
+		hit=true;
+		}
+		return hit;
+}
 
 
 <!-- Move Ball Right Below-->
@@ -84,6 +90,7 @@ function Ball (cssid)
 		if(nohits == false){position.left=position.left+20;}
 		else{console.log("hit");}
 		$(cssid).offset(position);}
+	
 <!-- Move Ball Left Below-->
 	this.moveleft=function()
 	{	var nohits=this.checkwallhit();
@@ -124,12 +131,11 @@ function Ball (cssid)
 	<!-- Move Ball Diagonal Right Down Below-->
 	this.movediagrd=function()
 	{
-		var pos=$(cssid).offset();
-		console.log("left "+pos.left);
-		console.log("top "+pos.top);
-		pos.left=pos.left+20
-		pos.top=pos.top+20
-		$(cssid).offset(pos);
+		var position=$(cssid).offset();
+		console.log("top "+position.top);
+		position.top=position.top+20;
+		position.left=position.left+20;
+		$(cssid).offset(position);
 	}
 	<!-- Move Ball Diagonal Right Up Below-->
 	this.movediagru=function()
@@ -139,7 +145,7 @@ function Ball (cssid)
 		position.top=position.top-20;
 		position.left=position.left+20;
 		$(cssid).offset(position);
-	
+	}
 	<!-- Move Ball UP Below-->
 	this.moveup=function()
 	{
@@ -150,33 +156,39 @@ function Ball (cssid)
 		else{console.log("hit");}
 		$(cssid).offset(position);
 	}
+
 }
-var brickwall=new Ball("brickwall")
-var greenball=new Ball("#greenball");
-var orangeball=new Ball("#orangeball");
-var hairyball=new Ball("#hairyball");
-var whiteball=new Ball("#whiteball");
+
+var greenball=new ball("#greenball");
+var orangeball=new ball("#orangeball");
+var hairyball=new ball("#hairyball");
+var whiteball=new ball("#whiteball");
 
 </script>
-<!-- Site Table Design . -->
-<style>
-table,th,td
-{
-border:1px solid blue;
-border-collapse:collapse
-}
-</style>
-<!-- End Site Table Design -->
 </head>
+
 <body>
-	<!--Table 1-->
+<div id="wall"></div>
+
+<!--Images-->
+	<div style="text-align:center;border:0px solid black">
+	<img src="greenball.jpg" id="greenball" class="ball" alt="Dont Stress" height="150" width="150"id="greenball"/>
+	<img src="orangeball.jpg" id="orangeball" class="ball" alt="Dont Stress" height="150" width="150"id="orangeball"/>
+	</div>
+	<div style="text-align:center;border:0px solid black">
+	<img src="whiteball.jpg" id="whiteball" class="ball" alt="Dont Stress" height="150" width="150"id="whiteball"/>
+	<img src="hairyball.jpg" id="hairyball" class="ball" alt="Dont Stress" height="150" width="150"id="hairyball"/>
+	</div>
+	<!--End Images-->
+
+
 <div align="Left"><table id="table1"  style="margin-top:50px; margin-left:10px;">
-  <tr>
+ <tr>
     <td><img src="arrow_ul.png" id="arrow_ul"/></td>
     <td><img src="arrow_u.png" id="arrow_u"/></td>
     <td><img src="arrow_ur.png" id="arrow_ur"/></td>
-  </tr>
-  <tr>
+ </tr>
+ <tr>
     <td><img src="arrow_l.png" id="arrow_l"/></td>
     <td>Green</td>
     <td><img src="arrow_r.png" id="arrow_r"/></td>
@@ -186,11 +198,10 @@ border-collapse:collapse
     <td><img src="arrow_d.png" id="arrow_d"/></td>
     <td><img src="arrow_dr.png" id="arrow_dr"/></td>
   </tr>
-
 </table>
 </div>
-<!--test green code-->
-	<script>
+
+<script>
 		$("#table1 #arrow_ul").click (function(){
 		greenball.movediaglu();
 	});
@@ -223,10 +234,9 @@ border-collapse:collapse
 		greenball.movediagrd();
 	});
 	</script>
-<!--test code end-->
-<!--Table 2-->
+
 <div align="Right"><table id="table2" style="margin-top:-150px; margin-left:10px;">
-  <tr>
+<tr>
     <td><img src="arrow_ul.png" id="arrow_ul"/></td>
     <td><img src="arrow_u.png" id="arrow_u"/></td>
     <td><img src="arrow_ur.png" id="arrow_ur"/></td>
@@ -242,16 +252,11 @@ border-collapse:collapse
     <td><img src="arrow_dr.png" id="arrow_dr"/></td>
   </tr>
 </table>
-</div>
-</table>
-</div>
-<!--test Orange code-->
-	<script>
+
+  <script>
 		$("#arrow_button_ul_white").click (function(){
 		orangeball.movediagul();
 	});
-	</script>
-	<script>
 		$("#table2 #arrow_ul").click (function(){
 		orangeball.movediaglu();
 	});
@@ -264,7 +269,7 @@ border-collapse:collapse
 		orangeball.movediagru();
 	});
 
-	$("#table2 #arrow_l").click (function(){
+		$("#table2 #arrow_l").click (function(){
 		orangeball.moveleft();
 	});
 
@@ -286,28 +291,18 @@ border-collapse:collapse
 		$("#arrow_button_dr_white").click (function(){
 		orangeball.movediagrd();
 	});
-	</script>
-<!--test code end-->
-	<!--Images-->
-	<div style="text-align:center;border:0px solid black">
-	<img src="greenball.jpg" id="greenball" class="ball" alt="Dont Stress" height="150" width="150"id="greenball"/>
-	<img src="orangeball.jpg" id="orangeball" class="ball" alt="Dont Stress" height="150" width="150"id="orangeball"/>
-	</div>
-	<div style="text-align:center;border:0px solid black">
-	<img src="whiteball.jpg" id="whiteball" class="ball" alt="Dont Stress" height="150" width="150"id="whiteball"/>
-	<img src="hairyball.jpg" id="hairyball" class="ball" alt="Dont Stress" height="150" width="150"id="hairyball"/>
-	</div>
-	<!--End Images-->
-<!--Table 3-->
+</script>
+
+
 <div align="left"><table id="table3" width="150px" style="margin-top:60px; margin-left:10px;">
-  <tr>
+	<tr>
     <td><img src="arrow_ul.png" id="arrow_ul"/></td>
     <td><img src="arrow_u.png" id="arrow_u"/></td>
     <td><img src="arrow_ur.png" id="arrow_ur"/></td>
   </tr>
   <tr>
     <td><img src="arrow_l.png" id="arrow_l"/></td>
-    <td>White</td>
+    <td>Orange</td>
     <td><img src="arrow_r.png" id="arrow_r"/></td>
   </tr>
   <tr>
@@ -316,10 +311,8 @@ border-collapse:collapse
     <td><img src="arrow_dr.png" id="arrow_dr"/></td>
   </tr>
 </table>
-</div>
-</table>
-</div>
-<!--test green code-->
+
+
 <script>
 		$("#arrow_button_ul_white").click (function(){
 		whiteball.movediagul();
@@ -361,10 +354,9 @@ border-collapse:collapse
 		whiteball.movediagrd();
 	});
 	</script>
-<!--test code end-->
-<!--Table 4-->
+
 <div align="right"><table id="table4" style="margin-top:-150px; margin-left:10px;">
-  <tr>
+	<tr>
     <td><img src="arrow_ul.png" id="arrow_ul"/></td>
     <td><img src="arrow_u.png" id="arrow_u"/></td>
     <td><img src="arrow_ur.png" id="arrow_ur"/></td>
@@ -380,9 +372,8 @@ border-collapse:collapse
     <td><img src="arrow_dr.png" id="arrow_dr"/></td>
   </tr>
 </table>
-</div>
-<!--test hairy code-->
-	<script>
+
+<script>
 		$("#arrow_button_ul_white").click (function(){
 		hairyball.movediagul();
 	});
@@ -397,7 +388,7 @@ border-collapse:collapse
 	});
 
 		$("#table4 #arrow_ur").click (function(){
-		hairyball.movediagur();
+		hairyball.movediagru();
 	});
 
 	    $("#table4 #arrow_l").click (function(){
@@ -419,86 +410,10 @@ border-collapse:collapse
 		$("#table4 #arrow_dr").click (function(){
 		hairyball.movediagdr();
 	});
-		
-
-
-	    function add(num1, num2)
-	{
-		return num1+ num2;
-	}
-		function subtract(num1, num2)	
-	{
-	    return num1-num2;
-	}    
+		$("#arrow_button_dr_white").click (function(){
+		hairyball.movediagrd();
+	});
 </script>
-<!--test code end-->
-        <!--Table 5-->
-	<div align="right"><table id="table5" style="margin-top:-550px; margin-left:150px;">
- 	  <tr>
-		<td><img src="http://2.bp.blogspot.com/-ZCCf6T8sDao/Tks3DMDEl5I/AAAAAAAAM8w/r6m9uVASl6s/s1600/brick+wall.jpg" height="300" width="150" id="bw" boarders="5" ></td>
-		<if greenball
-
-</script>
-
-
-
-<script type="text/javascript">
-
-//*******************************
-//* COLOR CHANGING CODE
-//*******************************
-
-
-function color_changer() {
-
-var now = new Date();
-
-var seconds = now.getSeconds();
-
-var bcolor = "white";
-
-if(seconds == 0 || seconds == 7 || seconds == 14 || seconds == 21 || seconds == 28 || seconds == 35 || seconds == 42 || seconds == 49 || seconds == 56) { 
- bcolor = "red";
-}
-
-if(seconds == 1 || seconds == 8 || seconds == 15 || seconds == 22 || seconds == 29 || seconds == 36 || seconds == 43 || seconds == 50 || seconds == 57) { 
- bcolor = "orange";
-}
-
-if(seconds == 2 || seconds == 9 || seconds == 16 || seconds == 23 || seconds == 30 || seconds == 37 || seconds == 44 || seconds == 51 || seconds == 58) { 
- bcolor = "yellow";
-}
-
-if(seconds == 3 || seconds == 10 || seconds == 17 || seconds == 24 || seconds == 31 || seconds == 38 || seconds == 45 || seconds == 52 || seconds == 59) {
- bcolor = "green";
-}
-
-if(seconds == 4 || seconds == 11 || seconds == 18 || seconds == 25 || seconds == 32 || seconds == 39 || seconds == 46 || seconds == 53 || seconds == 60) {
- document.bcolor = "blue";
-}
-
-if(seconds == 5 || seconds == 12 || seconds == 19 || seconds == 26 || seconds == 33 || seconds == 40 || seconds == 47 || seconds == 54) { 
- bcolor = "indigo";
-}
-
-if(seconds == 6 || seconds == 13 || seconds == 20 || seconds == 27 || seconds == 34 || seconds == 41 || seconds == 48 || seconds == 55) {
- bcolor = "purple";
-}
-
-document.getElementsByTagName("body")[0].style.backgroundColor = bcolor;
-setTimeout("color_changer()", 1000);
-
-}
-
-</script>
-<form name = control>
-<input name = "on_off" Type = "button" value = "On" onClick = "color_changer()">
-<input type = "button" value = "Off" onClick = "history.go(0)">
-</form>
-
 
 </body>
 </html>
-
-
-"#table4 #pruarrow"

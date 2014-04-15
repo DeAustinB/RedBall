@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#redball
+{
+	position:absolute;
+	left:200px;
+
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+<script> 
+function Ball (cssid)
+{
+	this.moveright=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		console.log("top "+pos.top);
+		pos.left=pos.left+20;
+		$(cssid).offset(pos);
+	}
+	this.movedown=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("top "+pos.top);
+		pos.top=pos.top+20;
+		$(cssid).offset(pos);
+	}
+	this.moveup=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("top "+pos.top);
+		pos.top=pos.top-20;
+		$(cssid).offset(pos);
+	}
+	this.moveleft=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		pos.left=pos.left-20;
+		$(cssid).offset(pos);
+	}
+	this.moveupleft=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		pos.left=pos.left-20;
+		pos.top=pos.top-20;
+		$(cssid).offset(pos);
+	}
+	this.moveupright=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		pos.left=pos.left+20;
+		pos.top=pos.top-20;
+		$(cssid).offset(pos);
+	}
+	this.movedownright=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		pos.left=pos.left+20;
+		pos.top=pos.top+20;
+		$(cssid).offset(pos);
+	}
+	this.movedownleft=function()
+	{
+		var pos=$(cssid).offset();
+		console.log("left "+pos.left);
+		pos.left=pos.left-20;
+		pos.top=pos.top+20;
+		$(cssid).offset(pos);
+	}
+}
+var redball1=new Ball("#red");
+var greenball=new Ball("#green");
+var whiteball=new Ball("#white");
+var orangeball=new Ball("#orange");
+var blueball=new Ball("#blue");
+var hairyball=new Ball("#hairy");
+</script>
+</head>
+<body>
+<img src="redball1.png" id="red" width="100" height="111">
+<img src="greenball.jpg" id="green" width="100" height="111">
+<img src="whiteball.jpg" id="white" width="100" height="111">
+<img src="orangeball.jpg" id="orange" width="100" height="111"> 
+<img src="blueball.png" id="blue" width="100" height="111">
+<img src="hairyball.jpg" id="hairy" width="100" height="111">
+</body>
+</html>
